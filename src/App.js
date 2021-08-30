@@ -1,9 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
+import {Login} from './Login/Login';
 
 function App() {
   return (
-    <h1>Hi bb !</h1>
+    <div class='root'>
+      <h1>Hi bb ! Ca c'est l'app</h1>
+      <Login />
+    </div>
   );
 }
 
