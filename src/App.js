@@ -2,15 +2,14 @@ import './App.css';
 import {Login} from './Login/Login';
 import { Profile } from './Profile/Profile';
 import { Navbar } from './Navbar/Navbar';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from 'react';
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isAuthentificate: false
-    }
+    this.state = localStorage.getItem('current-user') ? { isAuthentificate: true } : { isAuthentificate: false }
     this.handleDeconnexion = this.handleDeconnexion.bind(this)
     this.handleConnexion = this.handleConnexion.bind(this)
   }
@@ -20,7 +19,6 @@ export class App extends React.Component {
   }
 
   handleConnexion() {
-    console.log("connexion")
     this.setState({isAuthentificate: true})
   }
 
@@ -29,14 +27,14 @@ export class App extends React.Component {
       <Router>
         <Navbar isAuthentificate={this.state.isAuthentificate} handleDeconnexion={this.handleDeconnexion} />
         <Switch>
-          <Route path="/login">
-            <Login isAuthentificate={this.state.isAuthentificate} handleConnexion={this.handleConnexion} />
-          </Route>
-          <Route path="/profile">
-            <Profile isAuthentificate={this.state.isAuthentificate} />
-          </Route>
+          <PrivateRoute isAuthentificate={!this.state.isAuthentificate} path="/login">
+            <Login handleConnexion={this.handleConnexion} />
+          </PrivateRoute>
+          <PrivateRoute isAuthentificate={this.state.isAuthentificate} path="/profile">
+            <Profile  />
+          </PrivateRoute>
           <Route>
-            Non mais c'est quoi cet URL
+            Home
           </Route>
         </Switch>
       </Router>

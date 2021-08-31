@@ -1,7 +1,6 @@
 import React from "react";
 import './Login.css';
 import Users from '../users.json';
-import { Redirect } from 'react-router-dom';
 
 export class Login extends React.Component {
     constructor(props) {
@@ -29,21 +28,13 @@ export class Login extends React.Component {
         Users.forEach((user) => {
            if (user.username === this.state.username && user.password === this.state.password ) {
                localStorage.setItem('current-user', user.username)
-               console.log("ici")
                this.props.handleConnexion()
            }
-           if (this.isAuthentificate) { console.log("authentifié") }
            this.setState({loginError: true})
         });
         event.preventDefault()
     }
 
-    redirect = () => {
-        if (this.isAuthentificate) {
-            return <Redirect to="/profile" />
-        }
-    }
-    
     displayLoginError = () => {
         if (this.state.loginError) {
             return <div className="alert alert-danger" role="alert">
@@ -53,9 +44,7 @@ export class Login extends React.Component {
     }
 
     render() {
-        this.isAuthentificate = this.props.isAuthentificate
         return <div className="mt-5">
-            {this.redirect()}
             <form className="w-50 m-auto" onSubmit={this.handleSubmit}>
                 <div className="mb-3">
                     {this.displayLoginError()}
