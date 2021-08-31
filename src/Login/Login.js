@@ -27,7 +27,7 @@ export class Login extends React.Component {
     handleSubmit(event) {
         Users.forEach((user) => {
            if (user.username === this.state.username && user.password === this.state.password ) {
-               localStorage.setItem('current-user', user.username)
+               localStorage.setItem('current-user', JSON.stringify(user))
                this.props.handleConnexion()
            }
            this.setState({loginError: true})

@@ -1,19 +1,21 @@
 [
     {
         "username": "User1",
+        "firstname": "userprenom1",
         "password": "Pass1",
         "profile": {
             "adresse": "1 rue de l'user 1",
-            "code postal": "11111",
+            "codepostal": "11111",
             "ville": "VilleUser1"
         }
     },
     {
         "username": "User2",
+        "firstname": "userprenom2",
         "password": "Pass2",
         "profile": {
             "adresse": "2 rue de l'user 2",
-            "code postal": "22222",
+            "codepostal": "22222",
             "ville": "VilleUser2"
         }
     }

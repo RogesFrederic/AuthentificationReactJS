@@ -23,6 +23,7 @@ export class App extends React.Component {
   }
 
   render() {
+    let user = localStorage.getItem('current-user')
     return (
       <Router>
         <Navbar isAuthentificate={this.state.isAuthentificate} handleDeconnexion={this.handleDeconnexion} />
@@ -31,7 +32,7 @@ export class App extends React.Component {
             <Login handleConnexion={this.handleConnexion} />
           </PrivateRoute>
           <PrivateRoute isAuthentificate={this.state.isAuthentificate} path="/profile">
-            <Profile  />
+            <Profile  user={JSON.parse(user)} />
           </PrivateRoute>
           <Route>
             Home

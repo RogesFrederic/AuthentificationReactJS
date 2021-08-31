@@ -4,6 +4,7 @@ import './Profile.css';
 export class Profile extends React.Component {
 
     render() {
+        let user = this.props.user
         return <div className="container">
             <h3>Profil</h3>
             <div className="row mb-3">
@@ -11,7 +12,7 @@ export class Profile extends React.Component {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Nom</h5>
-                            Michou
+                            {user.username}
                         </div>
                     </div>
                 </div>
@@ -20,7 +21,7 @@ export class Profile extends React.Component {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Prénom</h5>
-                            Michel
+                            {user.firstname}
                         </div>
                     </div>
                 </div>
@@ -30,7 +31,7 @@ export class Profile extends React.Component {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Adresse</h5>
-                            3 rue des chouchoux
+                            {user.profile.adresse}
                         </div>
                     </div>
                 </div>
@@ -38,7 +39,7 @@ export class Profile extends React.Component {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Code postal</h5>
-                            14123
+                            {user.profile.codepostal}
                         </div>
                     </div>
                 </div>
@@ -46,7 +47,7 @@ export class Profile extends React.Component {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Ville</h5>
-                            Mondeville-sur-Mer
+                            {user.profile.ville}
                         </div>
                     </div>
                 </div>
