@@ -3,6 +3,7 @@ import {Login} from './Login/Login';
 import { Profile } from './Profile/Profile';
 import { Navbar } from './Navbar/Navbar';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { Events } from './Events/Events'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from 'react';
 
@@ -33,6 +34,9 @@ export class App extends React.Component {
           </PrivateRoute>
           <PrivateRoute isAuthentificate={this.state.isAuthentificate} path="/profile">
             <Profile  user={JSON.parse(user)} />
+          </PrivateRoute>
+          <PrivateRoute isAuthentificate={this.state.isAuthentificate} path="/event">
+            <Events user={JSON.parse(user)} />
           </PrivateRoute>
           <Route>
             Home

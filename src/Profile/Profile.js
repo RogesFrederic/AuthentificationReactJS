@@ -2,6 +2,14 @@ import React from 'react';
 import './Profile.css';
 
 export class Profile extends React.Component {
+    componentDidMount() {  
+        let username = JSON.parse(localStorage.getItem('current-user')).username
+        let logs = JSON.parse(localStorage.getItem('logs/'+ username))
+        logs = logs ? logs : []
+        let date =  new Date()
+        logs.push({ action: "A consulté son profil", currenttime: date.toGMTString()})
+        localStorage.setItem('logs/'+ username, JSON.stringify(logs))
+    }
 
     render() {
         let user = this.props.user

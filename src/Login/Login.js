@@ -27,8 +27,13 @@ export class Login extends React.Component {
     handleSubmit(event) {
         Users.forEach((user) => {
            if (user.username === this.state.username && user.password === this.state.password ) {
-               localStorage.setItem('current-user', JSON.stringify(user))
-               this.props.handleConnexion()
+                localStorage.setItem('current-user', JSON.stringify(user))
+                let logs = JSON.parse(localStorage.getItem('logs/'+ user.username))
+                logs = logs ? logs : []
+                let date =  new Date()
+                logs.push({ action: "Connexion", currenttime: date.toGMTString()})
+                localStorage.setItem('logs/'+ user.username, JSON.stringify(logs))
+                this.props.handleConnexion()
            }
            this.setState({loginError: true})
         });

@@ -9,6 +9,12 @@ export class Navbar extends React.Component {
     }
 
     deconnexion = () => {
+        let username = JSON.parse(localStorage.getItem('current-user')).username
+        let logs = JSON.parse(localStorage.getItem('logs/'+ username))
+        logs = logs ? logs : []
+        let date =  new Date()
+        logs.push({ action: "Deconnexion", currenttime: date.toGMTString()})
+        localStorage.setItem('logs/'+ username, JSON.stringify(logs))
         localStorage.removeItem("current-user");
         this.props.handleDeconnexion()
     }
@@ -20,6 +26,9 @@ export class Navbar extends React.Component {
             contentNavBar = <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/profile">Profil</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link active" to="/event">Journal</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link active" onClick={this.deconnexion} to="/login">Déconnexion</Link>
