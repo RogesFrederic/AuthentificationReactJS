@@ -7,7 +7,7 @@ export class Profile extends React.Component {
         let logs = JSON.parse(localStorage.getItem('logs/'+ username))
         logs = logs ? logs : []
         let date =  new Date()
-        logs.push({ action: "A consulté son profil", currenttime: date.toGMTString()})
+        logs.push({ action: "A consulté son profil", currenttime: date.toLocaleString("fr-fr")})
         localStorage.setItem('logs/'+ username, JSON.stringify(logs))
     }
 

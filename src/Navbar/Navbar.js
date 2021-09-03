@@ -13,7 +13,7 @@ export class Navbar extends React.Component {
         let logs = JSON.parse(localStorage.getItem('logs/'+ username))
         logs = logs ? logs : []
         let date =  new Date()
-        logs.push({ action: "Deconnexion", currenttime: date.toGMTString()})
+        logs.push({ action: "Deconnexion", currenttime: date.toLocaleString("fr-fr")})
         localStorage.setItem('logs/'+ username, JSON.stringify(logs))
         localStorage.removeItem("current-user");
         this.props.handleDeconnexion()

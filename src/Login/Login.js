@@ -31,7 +31,7 @@ export class Login extends React.Component {
                 let logs = JSON.parse(localStorage.getItem('logs/'+ user.username))
                 logs = logs ? logs : []
                 let date =  new Date()
-                logs.push({ action: "Connexion", currenttime: date.toGMTString()})
+                logs.push({ action: "Connexion", currenttime: date.toLocaleString("fr-fr")})
                 localStorage.setItem('logs/'+ user.username, JSON.stringify(logs))
                 this.props.handleConnexion()
            }
