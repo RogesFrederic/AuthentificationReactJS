@@ -1,4 +1,5 @@
 import React from 'react';
+import { Event } from './Event';
 
 export class Events extends React.Component {
     render() {
@@ -15,10 +16,7 @@ export class Events extends React.Component {
                 </thead>
                 <tbody>
                     { logs.map(element => {
-                        return (<tr key={element.currenttime}>
-                            <td>{element.action}</td>
-                            <td>{element.currenttime}</td>
-                        </tr>);
+                        return <Event log= {element} />;
                     }) }
                 </tbody>
             </table>
